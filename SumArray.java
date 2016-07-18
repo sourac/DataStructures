@@ -1,4 +1,4 @@
-/*this program has the functionality of findind the number of times 
+/*this program has the functionality of finding the number of times 
  * the given sum can be formed in the array through pairing two elements.
  * */
 
