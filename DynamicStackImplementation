@@ -1,0 +1,71 @@
+package atul.learning.Stacks;
+
+public class DynamicStackImplementation {
+	int stackSize;
+	int[] stack;
+	int top;
+
+	public DynamicStackImplementation(int value) {
+		this.stackSize = value;
+		this.stack = new int[stackSize];
+		this.top = -1;
+	}
+
+	public static void main(String[] args) {
+		DynamicStackImplementation dsi = new DynamicStackImplementation(2);
+		try {
+			dsi.push(2);
+			dsi.push(20);
+			dsi.push(56);
+			dsi.push(12);
+			dsi.push(89);
+			
+			dsi.pop();
+			dsi.pop();
+			dsi.pop();
+			dsi.pop();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void pop()throws Exception {
+			if(this.isStackEmpty()){
+				throw new Exception("stack is already empty,cannot pop anything");
+			}
+			
+			int val=this.stack[top];
+			System.out.println("value popped : " + val);
+			
+	}
+
+	private boolean isStackEmpty() {		
+		return (top<0);
+	}
+
+	private void push(int i) throws Exception {
+		if (this.isStackFull()) {
+			System.out.println("stack is already full,increasing the capacity");
+			increaseCapacity();
+		}
+		this.stack[++top] = i;
+		System.out.println("data pushed :" + i);
+
+	}
+
+	private void increaseCapacity() {
+		int[] newStack = new int[stackSize * 2];
+		for (int i = 0; i < stackSize; i++) {
+			newStack[i] = stack[i];
+		}
+		
+		this.stackSize=stackSize*2;
+		this.stack=newStack;
+
+	}
+
+	private boolean isStackFull() {
+		return (top == stackSize - 1);
+	}
+
+}
