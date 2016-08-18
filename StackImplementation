@@ -1,0 +1,75 @@
+package atul.learning.Stacks;
+
+public class StackToImplement {
+	int[] stack;
+	int stackSize;
+	int top;
+	
+	public StackToImplement(int stackSize) {
+	    this.stackSize=stackSize;
+		this.stack=new int[stackSize];
+		this.top=-1;
+	}
+	
+	public static void main(String[] args) {
+		
+		StackToImplement st=new StackToImplement(5);
+	         try {
+				st.push(5);
+				st.push(6);
+				st.peekIntoStack();
+				st.push(7);
+				st.peekIntoStack();
+				st.push(8);
+				st.push(9);
+				st.peekIntoStack();
+				System.out.println(" ");
+				st.pop();
+				st.pop();
+				st.pop();
+				st.pop();
+				st.pop();
+				
+				
+			} catch (Exception e) {
+								e.printStackTrace();
+			}
+		
+	}
+      
+	//method to see the top element in the stack
+	private void peekIntoStack() {
+		int val=this.stack[top];
+		System.out.println("element at the top : "+val);
+		
+	}
+    //method to pop the value from the stack
+	private void pop()throws Exception {
+    if(this.isStackEmpty()){
+    	throw new Exception("Stack is already empty,nothing can be popped");
+    }
+    int val=this.stack[top--];
+    System.out.println("value popped :"+val);
+		
+	}
+    
+	//method to check whether stack is empty or not
+	private boolean isStackEmpty() {
+		return (top<0);
+	}
+     
+	//method to push the value onto the stack
+	private void push(int i)throws Exception {
+		if(this.isStackFull()){
+			throw new Exception("Stack is already full,cannot push anymore");
+		}
+		this.stack[++top]=i;
+		System.out.println("added element :" + stack[top]);
+	}
+    
+	//method to check whether the array is full or not
+	private boolean isStackFull() {
+				return (top==stackSize-1);
+	}
+
+}
