@@ -1,0 +1,69 @@
+
+public class QueueImplementationUsingArray {
+	int front = -1;
+	int rear = -1;
+	int capacity = 0;
+	int currentSize = 0;
+	int[] queueArray;
+
+	public QueueImplementationUsingArray(int i) {
+		this.capacity = i;
+		this.queueArray = new int[this.capacity];
+
+	}
+
+	public static void main(String[] args) {
+		QueueImplementationUsingArray qi = new QueueImplementationUsingArray(4);
+		qi.enqueue(1);
+		qi.enqueue(2);
+		qi.enqueue(3);
+		qi.enqueue(4);
+		qi.enqueue(5);
+		qi.dequeue();
+		qi.dequeue();
+		qi.dequeue();
+		qi.dequeue();
+		qi.dequeue();
+	}
+
+	private void dequeue() {
+		if (isQueueEmpty()) {
+             System.out.println("Queue is Empty,cannot remove anymore");
+  		}
+		else{
+			currentSize--;
+			front++;
+			System.out.println("element removed from the queue is : " + queueArray[front]);
+			
+		}
+	}
+
+	private boolean isQueueEmpty() {
+		boolean status = false;
+		if (currentSize == 0) {
+			status = true;
+		}
+		return status;
+	}
+
+	private void enqueue(int i) {
+		if (isQueueFull()) {
+			System.out.println("Queue is already full,cannot insert anymore");
+		} else {
+			currentSize++;
+			rear++;
+			queueArray[rear] = i;
+			System.out.println("element inserted into the queue is : " + i);
+			System.out.println("CurrentSize of Queue is : " + currentSize);
+		}
+
+	}
+
+	private boolean isQueueFull() {
+		boolean status = false;
+		if (currentSize == capacity) {
+			status = true;
+		}
+		return status;
+	}
+}
